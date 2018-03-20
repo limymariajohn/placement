@@ -1,0 +1,103 @@
+<html>
+	<head>
+
+    </head>
+	<body>
+		<html>
+<head ><b>Student Details</b></head>
+<title>STUDENTDETAILS</title>
+<body align="center">
+
+<form method="post"action="">
+
+
+
+			
+			<table border="1" width="70%" cellpadding="4" cellspacing="5" align="center">
+				<tr><td colspan="4" align="center"><font color="blue" style="bold" size="20">AddStudent</font></td></tr>
+				<tr><td colspan="2" align="center">Student Details</td></tr>
+				<tr>
+				<td>sid:</td><td><input type="text" name="sid"></td>
+				</tr>
+				<tr>
+				<td> Name:</td><td><input type="text" name="txtname"></td>
+				</tr>
+				
+				<tr>
+				<td>Gender:</td><td><input type="radio" name="sex" value="m">Male<input type="radio" name="sex" value="f">Female</td>
+				
+				</tr>
+				<tr><td>DOB:</td>
+				<td><input type="date" name="datedob"></td>
+				</tr>
+				<tr>
+				<td>Course:</td>
+				<td><select name="txtcourse">
+					<option>MCA</option>       
+    					<option>MBA</option>       
+				        <option>B-tech</option>       
+				        <option>M-tech</option>       
+   				        
+    				
+				   </select>	</td>
+				</tr>
+				<tr>
+				<td>Address:</td><td><input type="textarea" name="txtaddress"></td>
+				</tr>
+				<tr>
+				<td>Mobile:</td><td><input type="number" name="txtphn"></td>
+				
+				<tr>
+				<td>Email:</td><td><input type="text" name="txtemail"></td>
+		
+				</tr>
+				<tr>
+				<td>Password:</td><td><input type="password" name="password"></td>
+				
+				</tr>
+				<tr>
+                <td><input type="submit" name="submit" align="center">
+				</td>
+<tr>
+				
+			</table>
+		</form>
+<?php
+if (isset ($_POST["submit"]))
+{
+include("connection.php");
+$sid=$_POST["sid"];
+$name=$_POST["txtname"];
+$gender=$_POST["txtgender"];
+$dob=$_POST["datedob"];
+$course=$_POST["txtcourse"];
+$address=$_POST["txtaddress"];
+$mob=$_POST["txtphn"];
+$email=$_POST["txtemail"];
+$pass=$_POST["password"];
+
+$id=100;
+$s=mysqli_query($con,"select * from studentdetails");
+//$filename="";
+while($row=mysqli_fetch_array($s))
+{
+  $id=$row[0];
+  break;
+}
+$id++; 
+/*$filename=$_FILES["fileimage1"]["name"];
+$x=split("[.]",$filename);
+$n=count($x);
+$n--;
+$ext=$x[$name];
+$filename="$name.$ext";
+move_uploaded_file($_FILES["fileimage1"]["tmp_name"],"./images/$filename");*/
+//$regdate=date("Y")."-".date("m")."-".date("d");
+  $s= "insert into studentdetails values('$sid','$name',$gender,'$dob','$course',$address,'$mob','$email',$pass,)";
+ mysqli_query($con,$s);
+echo "success";
+echo $s;
+}
+?>
+	</body>
+</html>
