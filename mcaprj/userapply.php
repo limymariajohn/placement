@@ -1,3 +1,7 @@
+<?php
+session_start();
+$sid=$_SESSION["sid"];
+?>
 <!DOCTYPE html>
 <html>
   <head><Student Register>
@@ -11,7 +15,7 @@
 					</div>
 <style>
 body{
-	background-image:url("images/images (9).jpg");
+	background-image:url("images/purple_background_1920x1200.jpg");
 	background-size:1500px,1500px;
 }
 </style>
@@ -22,30 +26,30 @@ body{
 				
 				<tr><td colspan="2" align="center" style="color:red;"><b>Fill Details</b></td></tr>
 				<tr>
-				<td><font color="red"> <b>Name</b></td><td><input type="text" name="txtname"></td>
+				<td><font color="red"> <b>Name</b></td><td><input type="text" name="txtname" required></td>
 				</tr>
 				
 				<tr>
-				<td><font color="red"><b>Course</b></td><td><input type="text" name="course"</td>
+				<td><font color="red"><b>Course</b></td><td><input type="text" name="course" required></td>
 				
 				</tr>
 				
 				<tr>
-				  <td><font color="red"><b>10thMark in%<b></td><td><input type="text" name="txttenmark"></td>
+				  <td><font color="red"><b>10thMark in%<b></td><td><input type="text" name="txttenmark" required></td>
 				</tr>
 				<tr>
-				<td><font color="red"><b>12thMark in %<b></td><td><input type="text" name="txttwelvemark"></td>
+				<td><font color="red"><b>12thMark in %<b></td><td><input type="text" name="txttwelvemark" required></td>
 				
 				<tr>
-				<td><font color="red"><b>Degree Mark<b></td><td><input type="text" name="degree"></td>
+				<td><font color="red"><b>Degree Mark<b></td><td><input type="text" name="degree" required></td>
 		        </tr>
 				<tr>
-				<td><font color="red"><b><b>Email</td><td><input type="text" name="email"></td>
+				<td><font color="red"><b><b>Email</td><td><input type="email" name="email" required></td>
 		
 				</tr>
 				
 				<tr>
-				<td><font color="red"><b><b>Mob</td><td><input type="text" name="mob"></td>
+				<td><font color="red"><b><b>Mob</td><td><input type="number" name="mob" required></td>
 		
 				</tr>
 				<tr>
@@ -62,6 +66,8 @@ body{
 if (isset ($_POST["submit"]))
 {
 include("connection.php");
+$sid=$_SESSION["sid"];
+
 $name=$_POST["txtname"];
 $course=$_POST["course"];
 $classten=$_POST["txttenmark"];
@@ -71,11 +77,21 @@ $email=$_POST["email"];
 $mob=$_POST["mob"];
 $x=$_GET['x'];
 //INSERT INTO `userapply`(`name`, `course`, `classtenth`, `twelve`, `degree`, `email`, `mob`)
-$s= "insert into userapply (name, course,  classtenth, twelve, degree,email,mob,cid)values('$name','$course',$classten,$classtwelve,$degree,'$email','$mob',$x);";
+$s= "insert into userapply (name, course,  classtenth, twelve, degree,email,mob,cid,sid)values('$name','$course',$classten,$classtwelve,$degree,'$email','$mob',$x,$sid);";
   
  mysqli_query($con,$s);
-echo "Your application submitted sucessfully";
+//echo "Your application submitted sucessfully";
 echo $s;
+echo 
+"<script>var confirm=confirm(\"Your application submitted sucessfully\");
+if(confirm){
+	window.location='userapply.php';
+           }
+		   else{
+			   window.location='userapply.php';
+		   }
+          </script>";
+
 }
 
 ?>

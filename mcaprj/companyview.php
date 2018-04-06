@@ -93,6 +93,15 @@
 	</div>
 	</div>
 	</div>
+	<style>
+	
+body{
+	background-image:url("images/4f6d052bb1b26150115888ea06d4c106.jpg");
+	background-size:1500px,1500px;
+}
+
+</style>
+
 <?php
 
 include("connection.php");
@@ -108,3 +117,5 @@ echo "<table border ='0' cellspacing=3 width=80% height=80% align='center' style
   echo"</table>"
 
   ?>
+  </body>
+  </html>

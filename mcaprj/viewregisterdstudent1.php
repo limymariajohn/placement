@@ -5,7 +5,7 @@
   <body>
   <style>
 body{
-	background-image:url("images/220082059-solid-backgrounds-colors.jpg");
+	background-image:url("images/stock-vector-illustration-vector-of-cute-birds-holding-umbrella-with-raining-heart-in-pink-sky-background-design-759257740.jpg");
 	background-size:1500px,1500px;
 }
 </style>
@@ -14,7 +14,7 @@ body{
 				
 						  <table id="example2" class="table table-bordered table-hover">
 						    
-							<tr><th>Name</th><th>Course</th><th>class10th</th><th>class12th</th><th>Degree</th><th>Email</th><th>mobileno</th></tr>
+							<tr><th>Name</th><th>Course</th><th>class10th%</th><th>class12th%</th><th>Degree%</th><th>Email</th><th>mobileno</th></tr>
 							</head>
 							  <?php
                            include("connection.php");

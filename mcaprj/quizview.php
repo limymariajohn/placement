@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-md-2">
 					<div class="site-logo">
-						<a href="index.html" class="brand">SJC placement &Trainingcell</a>
+						<a href="index.html" class="brand">SJC placement&Trainng cell</a>
 					</div>
 				</div>					  
 
@@ -44,10 +44,10 @@
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="nav navbar-nav navbar-right">
 							  <li><a href="index.html">Home</a></li>
-							  <li><a href="test.html">Usertest</a></li>
-							 
-							  <li><a href="#about us">About us</a></li> 
-							  <li><a href="contactus.html">Contact us</a></li>
+							  <li><a href="#portfolio">Addcompany</a></li>
+							   <li><a href="studentview.php">Userviewlist</a></li>
+							  <li><a href="aboutus.html">About us</a></li> 
+							  <li><a href="contactus">Contact us</a></li>
                               <li><a href="index.html">Logout</a></li>							  
 						</ul>
 					</div>
@@ -93,40 +93,29 @@
 	</div>
 	</div>
 	</div>
-	<div class="main-container">
-<br><br><br><br><br><br><br><br>
-<style>
+	<style>
+	
 body{
-	background-image:url("images/ECBA-Mock-Test.jpg");
+	background-image:url("images/combination01.jpg");
 	background-size:1500px,1500px;
 }
-</style>
-<form method="post" action="quiz1.php">
-<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
 
-				 <h1 align="center"><font color="blue" style="bold" size="20"></font><b>USER TEST</b></h1>
-				
-				<h2  align="center" style="color:red;"><b>Tryouttest</b></h2>
-				<h3><font color="blue" size=""><b>Here, you can try  aptitude questions  for your placement .</b><h3>
-				
-				
-				<tr>
-				<td><font color="yellow" size=""><b>This may include!!</b></td>
-				</tr>
-				<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
-				<tr>
-				<td><font color="green" size="3"><b>VERBAL REASONINING</b></td>
-				</tr>
-				<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
-				<tr>
-				<tr>
-				<td><font color="green" size="3"><b>LOGICAL REASONINING</b></td>
-				</tr>
-				<tr>
-				<td><font color="green" size="3"><b>NUMBERSERIES</b></td>
-				</tr>
-				</table>
-				<input align="center" style="color:red;" type="submit" name="start" value="start"/>
-				</form>
-				</body>
-				</html>
+</style>
+
+<?php
+
+include("connection.php");
+$s=mysqli_query($con,"select * from usertest");
+echo "<table border ='0' cellspacing=3 width=80% height=80% align='center' style=margin:90px; bgcolor=#f7aa77>
+<tr><th colspan=12><font size=15 color=white >Company List</font></th></tr>
+<tr><th>Quizid</th><th>Question</th><th>OptionA</th><th>&nbsp&nbsp&nbspOptionB</th><th>&nbsp&nbspOptionC</th><th>&nbsp&nbspOptionD</th><th>&nbsp&nbspAnswer</th></tr>";
+  while($row=mysqli_fetch_array($s))
+  {
+	  $cid=$row[0];
+  echo "<tr><td>".$row["uid"]."</td><td>".$row["ques"]."</td><td>".$row["optiona"]."</td><td>".$row["optionb"]."</td><td>".$row["optionc"]."</td><td>".$row["optiond"]."</td><td>".$row["ans"]."</td></tr>";	 
+   }
+  echo"</table>"
+
+  ?>
+  </body>
+  </html>

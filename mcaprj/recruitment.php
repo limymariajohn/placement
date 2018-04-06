@@ -47,7 +47,7 @@
 							  
 							  <li><a href="aboutus.html">About us</a></li> 
 							  <li><a href="#contact us">Contact us</a></li>
-                              <li><a href="index.html">Logout</a></li>							  
+                              <li><a href="userhome.html">Logout</a></li>							  
 						</ul>
 					</div>
 					<!-- /.Navbar-collapse -->		 
@@ -94,13 +94,14 @@
 	</div>
 	<style>
 	body{
-	background-image:url("images/images (8).jpg");
+	background-image:url("images/download (1).jpg");
 	background-size:1500px,1500px;
 }
 </style>
 <?php
 
 include("connection.php");
+
 $s=mysqli_query($con,"select * from companydetails");
 echo "<table border ='0' cellspacing=3 width=80% height=80% align='center' style=margin:90px; bgcolor=#f7aa77>
 <tr><th colspan=12><font size=15 color=white >Company List</font></th></tr>
@@ -108,7 +109,7 @@ echo "<table border ='0' cellspacing=3 width=80% height=80% align='center' style
   while($row=mysqli_fetch_array($s))
   {
 	  $cid=$row[0];
-  echo "<tr><td>".$row["cid"]."</td><td>".$row["companyname"]."</td><td>".$row["industry"]."</td><td>".$row["website"]."</td><td>".$row["currentrecruitment"]."</td><td>".$row["dateofre"]."</td><td>".$row["place"]."</td><td><form method='post' action='userapply.php?x=".$row["cid"]."'><input type='hidden' name='h1' value='$cid'><input type='submit' name='apply' value='Apply now'></form></td></tr>";	 
+  echo "<tr><td>".$row["cid"]."</td><td>".$row["companyname"]."</td><td>".$row["industry"]."</td><td> <a href='https://www.google.co.in/search?ei=dYe4WsfTNovVvATD7ZOQCA&q=www.hcltech.com&oq=www.hcl&gs_l=psy-ab.1.1.0l5j0i10k1j0l4.1934.15145.0.17374.7.7.0.0.0.0.176.907.1j6.7.0....0...1c.1.64.psy-ab..0.7.903...0i131k1j0i131i67k1.0.nMZC2xV_enk".$row["website"]."'>".$row["website"]."</a></td><td>".$row["currentrecruitment"]."</td><td>".$row["dateofre"]."</td><td>".$row["place"]."</td><td><form method='post' action='userapply.php?x=".$row["cid"]."'><input type='hidden' name='h1' value='$cid'><input type='submit' name='apply' value='Apply now'></form></td></tr>";	 
    }
   echo"</table>"
 

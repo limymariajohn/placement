@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-md-2">
 					<div class="site-logo">
-						<a href="index.html" class="brand">SJC placement &Trainingcell</a>
+						<a href="index.html" class="brand">SJC placement&Training cell</a>
 					</div>
 				</div>					  
 
@@ -43,10 +43,9 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="nav navbar-nav navbar-right">
-							  <li><a href="index.html">Home</a></li>
-							  <li><a href="test.html">Usertest</a></li>
-							 
-							  <li><a href="#about us">About us</a></li> 
+							   <li><a href="index.html">Home</a></li>
+							   
+							  <li><a href="aboutus.html">About us</a></li> 
 							  <li><a href="contactus.html">Contact us</a></li>
                               <li><a href="index.html">Logout</a></li>							  
 						</ul>
@@ -97,36 +96,76 @@
 <br><br><br><br><br><br><br><br>
 <style>
 body{
-	background-image:url("images/ECBA-Mock-Test.jpg");
+	background-image:url("images/sat-subject-test2.jpg.");
 	background-size:1500px,1500px;
 }
 </style>
-<form method="post" action="quiz1.php">
-<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
 
-				 <h1 align="center"><font color="blue" style="bold" size="20"></font><b>USER TEST</b></h1>
+<form method="post" action="">
+<table border="2" width="70%" cellpadding="8" cellspacing="10" align="center">
+
+				<tr><td colspan="30" align="center"><font color="blue" style="bold" size="10">Try out test!!</font></td></tr>
 				
-				<h2  align="center" style="color:red;"><b>Tryouttest</b></h2>
-				<h3><font color="blue" size=""><b>Here, you can try  aptitude questions  for your placement .</b><h3>
+				<tr><td colspan="2" align="center"><font color="red">Aptitude questions</font></td></tr>
+				<tr>
+				<td><font color="red">Question</td><td><textarea name="question" rows="5" cols="40"></textarea></td>
+</td>
+				</tr>
+				<tr>
+				<td><font color="black"><b>Option A</b></td><td><input type="text" name="txta"></td>
+				</tr>
+				<tr>
+				<td><font color="black"><b>Option B</b></td><td><input type="text" name="txtb"></td>
+				</tr>
+				<tr>
+				<td><font color="black"><b>Option C</b></td><td><input type="text" name="txtc"></td>
+				</tr>
+				<tr>
+				<td><font color="black"><b>Option D</b></td><td><input type="text" name="txtd"></td>
+				</tr>
+				
+				
+				<!--<tr>
+				<td><font color="red"><b></b></td><td><input type="radio" name="gender" value="m" checked>Male<input type="radio" name="gender" value="f">Female</td>
+				
+				</tr>-->
+   				        
+    				
+				  
+				<tr>
+				<td><font color="black"><b>Answer</b></td><td><input type="text" name="ans"></td></td>
+				</tr>
 				
 				
 				<tr>
-				<td><font color="yellow" size=""><b>This may include!!</b></td>
-				</tr>
-				<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
-				<tr>
-				<td><font color="green" size="3"><b>VERBAL REASONINING</b></td>
-				</tr>
-				<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
-				<tr>
-				<tr>
-				<td><font color="green" size="3"><b>LOGICAL REASONINING</b></td>
-				</tr>
-				<tr>
-				<td><font color="green" size="3"><b>NUMBERSERIES</b></td>
-				</tr>
-				</table>
-				<input align="center" style="color:red;" type="submit" name="start" value="start"/>
-				</form>
-				</body>
-				</html>
+                <td><input type="submit" name="submit" align="center">
+				</td>
+<tr>
+				
+			</table>
+			</div>
+		</form>
+		
+	
+		
+	
+<?php
+if(isset($_POST["submit"]))
+{
+	echo "hi";
+include("connection.php");
+$ques=$_POST["question"];
+$optiona=$_POST["txta"];
+$optionb=$_POST["txtb"];
+$optionc=$_POST["txtc"];
+$optiond=$_POST["txtd"];
+$ans=$_POST["ans"];
+//INSERT INTO `usertest`(`uid`, `ques`, `optiona`, `optionb`, `optionc`, `optiond`, `ans`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])
+$s= "INSERT INTO `usertest`( `ques`, `optiona`, `optionb`, `optionc`, `optiond`, `ans`) VALUES ('$ques','$optiona', '$optionb','$optionc','$optiond','$ans');";
+ mysqli_query($con,$s);
+echo "success";
+echo $s;
+}
+?>
+</body>
+</html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,14 +23,14 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
+  
+  
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2">
 					<div class="site-logo">
-						<a href="index.html" class="brand">SJC placement &Trainingcell</a>
+						<a href="index.html" class="brand">SJC placement&Training cell</a>
 					</div>
 				</div>					  
 
@@ -44,11 +45,11 @@
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="nav navbar-nav navbar-right">
 							  <li><a href="index.html">Home</a></li>
-							  <li><a href="test.html">Usertest</a></li>
-							 
-							  <li><a href="#about us">About us</a></li> 
+							  
+							  <li><a href="studentview.php">listuser</a></li>
+							    <li><a href="aboutus.html">About us</a></li> 
 							  <li><a href="contactus.html">Contact us</a></li>
-                              <li><a href="index.html">Logout</a></li>							  
+                              <li><a href="adminhome.html">Logout</a></li>							  
 						</ul>
 					</div>
 					<!-- /.Navbar-collapse -->		 
@@ -97,36 +98,106 @@
 <br><br><br><br><br><br><br><br>
 <style>
 body{
-	background-image:url("images/ECBA-Mock-Test.jpg");
+	background-image:url("images/cX2jQu.jpg");
 	background-size:1500px,1500px;
 }
 </style>
-<form method="post" action="quiz1.php">
-<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
+  <script>
 
-				 <h1 align="center"><font color="blue" style="bold" size="20"></font><b>USER TEST</b></h1>
+</script>
+
+</head>
+<body>
+<?php
+	            include("connection.php");
+                 $id=$_GET['s_id'];
+                 $sql = "select *  from studentdetails where sid=$id;";
+                 $r= mysqli_query($con, $sql);
+				 $result=mysqli_fetch_assoc($r);
+				 ?>
+<form name="form1" onSubmit="" method="post" action="">
+<table border="1" width="70%" cellpadding="4" cellspacing="5" align="center">
+
+				<tr><td colspan="4" align="center"><font color="blue" style="bold" size="20">AddStudent</font></td></tr>
 				
-				<h2  align="center" style="color:red;"><b>Tryouttest</b></h2>
-				<h3><font color="blue" size=""><b>Here, you can try  aptitude questions  for your placement .</b><h3>
+				<tr><td colspan="2" align="center" style="color:red;"><b>Student Details</b></td></tr>
+				<tr>
+				<td><font color="red"> <b>sid:</b></td><td><input type="text" name="sid" value="<?php echo $result['sid']?>"></td>
+				</tr>
+				<tr>
+				
+				<td><font color="red"> <b>Name:</b></td><td><input type="text" name="txtname" value="<?php echo $result['name']?>"></td>
+				
+				</tr>
 				
 				
 				<tr>
-				<td><font color="yellow" size=""><b>This may include!!</b></td>
+				<td><font color="red"><b>Gender:</b></td><td><input type="radio" name="gender" value="m" checked>Male<input type="radio" name="gender" value="f">Female</td>
+				
 				</tr>
-				<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
-				<tr>
-				<td><font color="green" size="3"><b>VERBAL REASONINING</b></td>
-				</tr>
-				<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
-				<tr>
-				<tr>
-				<td><font color="green" size="3"><b>LOGICAL REASONINING</b></td>
+				<tr><td><font color="red"><b>DOB:</b></td>
+				<td><input type="date" name="datedob" value="<?php echo $result['dob']?>"></td>
 				</tr>
 				<tr>
-				<td><font color="green" size="3"><b>NUMBERSERIES</b></td>
+				<td><font color="red"><b>Course:<b></td>
+				<td><select name="txtcourse" value="<?php echo $result['course']?>">
+					<option>MCA</option>       
+    					<option>MBA</option>       
+				        <option>B-tech</option>       
+				        <option>M-tech</option>       
+   				        
+    				
+				   </select></td>
 				</tr>
-				</table>
-				<input align="center" style="color:red;" type="submit" name="start" value="start"/>
-				</form>
-				</body>
-				</html>
+				<tr>
+				<td><font color="red"><b>Address:<b></td><td><input type="textarea" name="txtaddress" value="<?php echo $result['address']?>"></td>
+				</tr>
+				<tr>
+				<td><font color="red"><b>Mobile:<b></td><td><input type="number" name="txtphn" value="<?php echo $result['mob']?>"></td>
+				
+				<tr>
+				<td><font color="red"><b>Email:<b></td><td><input type="email" name="email" value="<?php echo $result['email']?>"></td>
+		
+				</tr>
+				
+				<tr>
+				<td><font color="red"><b>Pass<b></td><td><input type="text" name="pass" value="<?php echo $result['pass']?>"></td>
+		
+				</tr>
+				
+				
+				<tr>
+                <td><input type="submit" name="Edit" align="center">
+				</td>
+<tr>
+				
+			</table>
+			</div>
+		</form>
+		
+	
+		
+	
+<?php
+if (isset ($_POST["Edit"]))
+{
+include("connection.php");
+$sid=$_POST["sid"];
+$name=$_POST["txtname"];
+$gender=$_POST["gender"];
+$dob=$_POST["datedob"];
+$course=$_POST["txtcourse"];
+$address=$_POST["txtaddress"];
+$mob=$_POST["txtphn"];
+$email=$_POST["email"];
+$pass=$_POST["pass"];
+$s="update studentdetails set sid='$sid',name ='$name',gender='$gender',dob='$dob',course='$course',address='$address',mob='$mob',email='$email',pass='$pass'where sid=$sid";
+mysqli_query($con,$s);
+// echo $s;
+}
+
+
+?>
+
+</body>
+</html>

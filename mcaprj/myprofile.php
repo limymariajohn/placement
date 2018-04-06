@@ -29,10 +29,17 @@ $sql="select * from studentdetails where sid='$sid'";
 $r=mysqli_query($con,$sql);
 $result=mysqli_fetch_assoc($r);
 ?>
+<style>
+body{
+	background-image:url("images/cX2jQu.jpg");
+	background-size:1500px,1500px;
+}
+</style
+
 <form method="post" action="">
-<table border="1" width="80%" height="70%"cellpadding="2" bgcolor="pink" cellspacing="2" align="center" style="margin-top:100px;">
-				<tr><td colspan="4" align="center"><font color="blue" style="bold" size="20">View profile List</font></td></tr>
-				<tr><td colspan="2" align="center"><font size=10 color=white>My profile</font></td>
+<table border="1" width="80%" height="70%"cellpadding="2" bgcolor="violet" cellspacing="2" align="center" style="margin-top:100px;">
+				<tr><td colspan="4" align="center"><font color="blue" style="bold" size="20"> My profile </font></td></tr>
+				<tr><td colspan="2" align="center"><font size=10 color="white">My profile</font></td>
 				<tr>
 				<td>Sid:</td><td><input type="text" name="sid" value="<?php echo $result['sid']?>"disabled ></td>
 				<tr>

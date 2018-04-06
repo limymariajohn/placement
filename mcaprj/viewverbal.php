@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +30,7 @@
 			<div class="row">
 				<div class="col-md-2">
 					<div class="site-logo">
-						<a href="index.html" class="brand">SJC placement &Trainingcell</a>
+						<a href="index.html" class="brand">SJC placement&Training cell</a>
 					</div>
 				</div>					  
 
@@ -43,10 +44,8 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="nav navbar-nav navbar-right">
-							  <li><a href="index.html">Home</a></li>
-							  <li><a href="test.html">Usertest</a></li>
-							 
-							  <li><a href="#about us">About us</a></li> 
+							   <li><a href="index.html">Home</a></li>
+							   <li><a href="aboutus.html">About us</a></li> 
 							  <li><a href="contactus.html">Contact us</a></li>
                               <li><a href="index.html">Logout</a></li>							  
 						</ul>
@@ -95,38 +94,69 @@
 	</div>
 	<div class="main-container">
 <br><br><br><br><br><br><br><br>
-<style>
-body{
-	background-image:url("images/ECBA-Mock-Test.jpg");
-	background-size:1500px,1500px;
-}
-</style>
-<form method="post" action="quiz1.php">
-<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
 
-				 <h1 align="center"><font color="blue" style="bold" size="20"></font><b>USER TEST</b></h1>
-				
-				<h2  align="center" style="color:red;"><b>Tryouttest</b></h2>
-				<h3><font color="blue" size=""><b>Here, you can try  aptitude questions  for your placement .</b><h3>
-				
-				
-				<tr>
-				<td><font color="yellow" size=""><b>This may include!!</b></td>
-				</tr>
-				<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
-				<tr>
-				<td><font color="green" size="3"><b>VERBAL REASONINING</b></td>
-				</tr>
-				<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
-				<tr>
-				<tr>
-				<td><font color="green" size="3"><b>LOGICAL REASONINING</b></td>
-				</tr>
-				<tr>
-				<td><font color="green" size="3"><b>NUMBERSERIES</b></td>
-				</tr>
-				</table>
-				<input align="center" style="color:red;" type="submit" name="start" value="start"/>
-				</form>
-				</body>
-				</html>
+<form id="form1" name="form1" method="post" action="quizsubmit.php">
+<?php
+	include("connection.php");
+	$qs="select * from usertest";
+	$qst=mysqli_query($con,$qs);
+	
+	while($r=mysqli_fetch_assoc($qst))
+	{
+?>
+<div style="margin-left:10px">
+  <table width="30%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td colspan="3">Quiz ID : <?php echo $r['uid']; ?></td>
+    </tr>
+    <tr>
+      <td colspan="3"></td>
+    </tr>
+    
+      <tr>
+        <td colspan="3" align="center">Question : <?php echo $r['ques']; ?></td>
+      </tr>
+      <tr>
+        <td>A </td>
+        <td > 
+            <div align="center">
+              <input name="opt[<?php echo $r['uid']; ?>]" type="radio" value="a" />
+                </div></td>
+        <td><?php echo $r['optiona']; ?></td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td><div align="center">
+            <input name="opt[<?php echo $r['uid']; ?>]" type="radio" value="b" />
+                </div></td>
+        <td><?php echo $r['optionb']; ?></td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td><div align="center">
+            <input name="opt[<?php echo $r['uid']; ?>]" type="radio" value="c" />
+                </div></td>
+        <td><?php echo $r['optionc']; ?></td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td><div align="center">
+            <input name="opt[<?php echo $r['uid']; ?>]" type="radio" value="d" />
+                </div></td>
+        <td><?php echo $r['optiond']; ?></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+	</tr>
+	<?php }
+	  
+	  ?>
+
+  </table>
+  </div>
+  <input type="submit" value="submit" name="submit" >
+ </form>
+</body>
+</html>

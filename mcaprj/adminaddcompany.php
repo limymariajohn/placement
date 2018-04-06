@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,9 +48,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							  <li><a href="index.html">Home</a></li>
 							   <li><a href="companyview.php">viewcompany</a></li>
-							  <li><a href="aboutus.html">About us</a></li> 
-							  <li><a href="contactus.html">Contact us</a></li>
-                              <li><a href="index.html">Logout</a></li>							  
+                              <li><a href="adminhome.html">Logout</a></li>							  
 						</ul>
 					</div>
 					<!-- /.Navbar-collapse -->		 
@@ -102,19 +103,23 @@
 				<tr><td colspan="30" align="center"><font color="red" style="bold" size="10">ADDCOMPANY</font></td></tr>
 				
 				<tr><td colspan="2" align="center">Company Details</td></tr>
-				<tr>
-				<td><font color="red"><b>Company Name</b></td><td><input type="text" name="txtcname"></td>
-				</tr>
 				
 				<tr>
-				<td><font color="red"><b>Industry</b></td><td><input type="text" name="txtindus"></td>
+				<td><font color="red"><b>Company Name</b></td><td><input type="text" name="txtcname" required></td>
+				
 				</tr>
+				
+				
+				<tr>
+				<td><font color="red"><b>Industry</b></td><td><input type="text" name="txtindus" required></td>
+				</tr>
+				
 				<tr><td><font color="red"><b>Website</b></td>
-				<td><input type="text" name="txtwebsite"></td>
+				<td><input type="text" name="txtwebsite" required></td>
 				</tr>
 				<tr>
 				<td><font color="red"><b>Current recruitent</b></td>
-				<td><select name="txtre">
+				<td><select name="txtre" required>
 					<option>salesofficer</option>       
     					<option>Trainee</option>       
 				        <option>Softwaredeveloper</option>       
@@ -124,10 +129,10 @@
 				   </select></td>
 				</tr>
 				<tr>
-				<td><font color="red"><b>Date of recruitment</b></td><td><input type="date" name="date"></td></td>
+				<td><font color="red"><b>Date of recruitment</b></td><td><input type="date" name="date" required></td></td>
 				</tr>
 				<tr>
-				<td><font color="red"><b>Place of recruitment</b></td><td><input type="text" name="place"></td>
+				<td><font color="red"><b>Place of recruitment</b></td><td><input type="text" name="place" required></td>
 				
 				
 				<tr>
@@ -147,6 +152,7 @@ if(isset($_POST["submit"]))
 {
 	echo "hi";
 include("connection.php");
+
 $cname=$_POST["txtcname"];
 $industry=$_POST["txtindus"];
 $website=$_POST["txtwebsite"];
@@ -157,6 +163,10 @@ $s= "INSERT INTO `companydetails`( `companyname`, `industry`, `website`, `curren
  mysqli_query($con,$s);
 echo "success";
 echo $s;
+
+$p="insert into job (companyname,dateofre,place) values ('$cname','$dateofre','$place');";
+mysqli_query($con,$p);
+echo $p;
 }
 ?>
 </body>

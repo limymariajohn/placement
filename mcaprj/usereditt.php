@@ -16,6 +16,7 @@ $mob=$_POST["txtphn"];
 $email=$_POST["email"];
 $pass=$_POST["pass"];
  $s="update studentdetails set sid='$sid',name ='$name',gender='$gender',dob='$dob',course='$course',address='$address',mob='$mob',email='$email',pass='$pass'";
+ echo $s;
 	  
 	  mysqli_query($con,$s);
 	   echo "<div style=margin:200px; align=center>";

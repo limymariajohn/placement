@@ -1,0 +1,32 @@
+<html>
+<head>
+<?php
+session start();
+$sc=$_SESSION["qno"];
+?>
+<title></title>
+</head>
+
+<body>
+
+<div>
+<style>
+body{
+	background-image:url("images/images (9).jpg.");
+	background-size:1500px,1500px;
+	}
+	</style>
+<form method="post" action="quizview.php">
+<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
+
+				 <h1 align="center"><font color="blue" style="bold" size="20"></font><b>Submitted successfully</b></h1>
+				<tr>
+				<td><font color="yellow" size=""><b>Your score is:<?php echo $sc; ?></b></td>
+				</tr>
+				</table>
+				<input align="center" style="color:red;" type="submit" name="viewans" value="Viewanswer"/>
+				</form>
+				</div>
+
+</body>
+</html>

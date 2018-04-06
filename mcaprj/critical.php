@@ -165,7 +165,7 @@ $optionc=$_POST["txtc"];
 $optiond=$_POST["txtd"];
 $ans=$_POST["ans"];
 //INSERT INTO `usertest`(`uid`, `ques`, `optiona`, `optionb`, `optionc`, `optiond`, `ans`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])
-$s= "INSERT INTO `usertest`( `ques`, `optiona`, `optionb`, `optionc`, `optiond`, `ans`) VALUES ('$ques','$optiona', '$optionb','$optionc','$optiond','$ans');";
+$s= "INSERT INTO `critical`( `ques`, `optiona`, `optionb`, `optionc`, `optiond`, `ans`) VALUES ('$ques','$optiona', '$optionb','$optionc','$optiond','$ans');";
  mysqli_query($con,$s);
 echo "success";
 echo $s;

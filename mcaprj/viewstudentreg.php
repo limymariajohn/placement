@@ -2,15 +2,17 @@
 <head>
 </head>
 <body>
-
+<div>
 <form name="abc" action="viewregisterdstudent1.php" method="post">
 <style>
 body{
-	background-image:url("images/images (7).jpg");
+	background-image:url("images/12.jpg");
 	background-size:1500px,1500px;
 }
 </style
-<label>select companyid</label>
+
+
+<label><font color="red">select companyid</font></label>
 <select name="cid" id="c1">
 <?php
 include("connection.php");
@@ -32,10 +34,11 @@ $sel="select  cid from userapply";
     
     
 
-
-
-
+</div>
+<div>
+<br><br><br>
 <input type="Submit" value="continue"/>
+</div>
 
 
 

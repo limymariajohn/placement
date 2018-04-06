@@ -103,7 +103,7 @@ echo "<table border ='0' cellspacing=3 width=80% height=80% align='center' style
   while($row=mysqli_fetch_array($s))
   {
 	  $sid=$row[0];
-  echo "<tr><td>".$row["sid"]."</td><td>".$row["name"]."</td><td>".$row["dob"]."</td><td>".$row["course"]."</td><td>".$row["address"]."</td><td>".$row["mob"]."</td><td>".$row["email"]."</td><td><form method='post' action='studentdelete.php'><input type='hidden' name='h1' value='$sid'><input type='submit' name='delete' value='Delete'></form></td></tr>";	 
+  echo "<tr><td>".$row["sid"]."</td><td>".$row["name"]."</td><td>".$row["dob"]."</td><td>".$row["course"]."</td><td>".$row["address"]."</td><td>".$row["mob"]."</td><td>".$row["email"]."</td><td><form method='post' action='studentdelete.php'><input type='hidden' name='h1' value='$sid'><input type='submit' name='delete' value='Delete'></form></td><td><a href='edit.php?s_id=".$row["sid"]."'>Edit</a></td></tr>";	 
    }
   echo"</table>"
 

@@ -22,8 +22,8 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
+  
+  
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="row">
@@ -46,9 +46,8 @@
 							  <li><a href="index.html">Home</a></li>
 							  
 							  <li><a href="studentview.php">listuser</a></li>
-							    <li><a href="aboutus.html">About us</a></li> 
-							  <li><a href="contactus.html">Contact us</a></li>
-                              <li><a href="index.html">Logout</a></li>							  
+							    
+                              <li><a href="adminhome.html">Logout</a></li>							  
 						</ul>
 					</div>
 					<!-- /.Navbar-collapse -->		 
@@ -101,7 +100,13 @@ body{
 	background-size:1500px,1500px;
 }
 </style>
-<form method="post" action="">
+  <script>
+
+</script>
+
+</head>
+<body>
+<form name="form1" onSubmit="" method="post" action="">
 <table border="1" width="70%" cellpadding="4" cellspacing="5" align="center">
 
 				<tr><td colspan="4" align="center"><font color="blue" style="bold" size="20">AddStudent</font></td></tr>
@@ -111,15 +116,18 @@ body{
 				<td><font color="red"> <b>sid:</b></td><td><input type="text" name="sid"></td>
 				</tr>
 				<tr>
-				<td><font color="red"> <b>Name:</b></td><td><input type="text" name="txtname"></td>
+				
+				<td><font color="red"> <b>Name:</b></td><td><input type="text" name="txtname" required></td>
+				
 				</tr>
+				
 				
 				<tr>
 				<td><font color="red"><b>Gender:</b></td><td><input type="radio" name="gender" value="m" checked>Male<input type="radio" name="gender" value="f">Female</td>
 				
 				</tr>
 				<tr><td><font color="red"><b>DOB:</b></td>
-				<td><input type="date" name="datedob"></td>
+				<td><input type="date" name="datedob" required></td>
 				</tr>
 				<tr>
 				<td><font color="red"><b>Course:<b></td>
@@ -133,18 +141,18 @@ body{
 				   </select></td>
 				</tr>
 				<tr>
-				<td><font color="red"><b>Address:<b></td><td><input type="textarea" name="txtaddress"></td>
+				<td><font color="red"><b>Address:<b></td><td><input type="textarea" name="txtaddress" required></td>
 				</tr>
 				<tr>
-				<td><font color="red"><b>Mobile:<b></td><td><input type="text" name="txtphn"></td>
+				<td><font color="red"><b>Mobile:<b></td><td><input type="number" name="txtphn"></td>
 				
 				<tr>
-				<td><font color="red"><b>Email:<b></td><td><input type="text" name="email"></td>
+				<td><font color="red"><b>Email:<b></td><td><input type="email" name="email"></td>
 		
 				</tr>
 				
 				<tr>
-				<td><font color="red"><b>Pass<b></td><td><input type="text" name="pass"></td>
+				<td><font color="red"><b>Pass<b></td><td><input type="text" name="pass" required></td>
 		
 				</tr>
 				
@@ -232,6 +240,8 @@ echo $pass;
 }
 $p="insert into login (username,password,sid) values ('$email','$pass','$sid');";
 mysqli_query($con,$p);
+echo $p;
 ?>
+
 </body>
 </html>

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +32,7 @@
 			<div class="row">
 				<div class="col-md-2">
 					<div class="site-logo">
-						<a href="index.html" class="brand">SJC placement &Trainingcell</a>
+						<a href="index.html" class="brand">SJC placement&Training cell</a>
 					</div>
 				</div>					  
 
@@ -43,10 +46,9 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="nav navbar-nav navbar-right">
-							  <li><a href="index.html">Home</a></li>
-							  <li><a href="test.html">Usertest</a></li>
-							 
-							  <li><a href="#about us">About us</a></li> 
+							   <li><a href="index.html">Home</a></li>
+							   
+							  <li><a href="aboutus.html">About us</a></li> 
 							  <li><a href="contactus.html">Contact us</a></li>
                               <li><a href="index.html">Logout</a></li>							  
 						</ul>
@@ -97,36 +99,32 @@
 <br><br><br><br><br><br><br><br>
 <style>
 body{
-	background-image:url("images/ECBA-Mock-Test.jpg");
+	background-image:url("images/sat-subject-test2.jpg.");
 	background-size:1500px,1500px;
 }
 </style>
-<form method="post" action="quiz1.php">
-<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
+<?php
+include("connection.php");
+$sid=$_SESSION['sid'];
+echo $sid;
+$sql="select companyname,dateofre,place from job WHERE sid=$sid;";
+$res=mysqli_query($con,$sql);
+echo "<table border ='0' cellspacing=3 width=100% height=100% align='center' style=margin:90px; bgcolor=#f7aa77>
+<tr><colspan=12><font size=15 color=white >Job STATUS</font></th></tr>
+<tr><th>companyname</th><th>dateofre</th><th>place</th></tr>";
+ if(mysqli_num_rows($res)>0)
+ {
+ while($row=mysqli_fetch_array($sql))
+  {
+	  
+	 //echo $loginid;
+	 
+  echo "<tr><td>".$row["companyname"]."</td><td>".$row["currentrecruitment"]."</td><td>".$row["dateofre"]."
+  </td><td>".$row["place"]."</td>	
+ </tr>";  
+   }
+ }
 
-				 <h1 align="center"><font color="blue" style="bold" size="20"></font><b>USER TEST</b></h1>
-				
-				<h2  align="center" style="color:red;"><b>Tryouttest</b></h2>
-				<h3><font color="blue" size=""><b>Here, you can try  aptitude questions  for your placement .</b><h3>
-				
-				
-				<tr>
-				<td><font color="yellow" size=""><b>This may include!!</b></td>
-				</tr>
-				<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
-				<tr>
-				<td><font color="green" size="3"><b>VERBAL REASONINING</b></td>
-				</tr>
-				<table border="1" width="50%" cellpadding="2" cellspacing="2" align="center">
-				<tr>
-				<tr>
-				<td><font color="green" size="3"><b>LOGICAL REASONINING</b></td>
-				</tr>
-				<tr>
-				<td><font color="green" size="3"><b>NUMBERSERIES</b></td>
-				</tr>
-				</table>
-				<input align="center" style="color:red;" type="submit" name="start" value="start"/>
-				</form>
-				</body>
-				</html>
+ echo"</table>"
+  ?>
+ 
